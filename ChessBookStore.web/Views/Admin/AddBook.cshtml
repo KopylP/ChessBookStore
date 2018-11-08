@@ -42,7 +42,7 @@
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="col-sm-6">
-                    <label asp-for="AuthorName" class="control-label">Доступні знижки на товар: </label><br />
+                    <label asp-for="AuthorName" class="control-label">Автор: </label><br />
                     <input asp-for="AuthorName" class="form-control" list="list">
                     <datalist id="list">
                         @foreach (var author in Model.Authors)
@@ -72,7 +72,7 @@
                     <span asp-validation-for="DiscontId" class="text-danger"></span>
                 </div>
                 <div class="col-sm-5">
-                    <label asp-for="CategoryId" class="control-label">Доступні знижки на товар: </label><br />
+                    <label asp-for="CategoryId" class="control-label">Категорія: </label><br />
                     <select asp-for="CategoryId" class="form-control">
                         @foreach (var category in Model.Categories)
                         {
