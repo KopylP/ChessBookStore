@@ -1,0 +1,67 @@
+﻿@model ChessBookStore.web.Models.EditUserViewModel
+
+@{
+    ViewData["Title"] = "UserInformation";
+}
+
+<h2>User Information</h2>
+
+<div>
+    @*<h4>EditUserViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+    </dl>
+    <a href="" class="btn btn-warning">Змінити</a>
+    <hr />
+    <h4>Адреси:</h4>
+    @if (Model.Addresses.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Країна</th>
+                    <th scope="col">Місто</th>
+                    <th scope="col">Адреса</th>
+                    <th scope="col">Код</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            @foreach (var address in Model.Addresses)
+            {
+                <tr>
+                    <td>@address.Country</td>
+                    <td>@address.City</td>
+                    <td>@address.AddressString</td>
+                    <td>@address.PostCode</td>
+                    <td>
+                        <a asp-action="EditAddress" asp-route-addressId="@address.Id" class="btn btn-warning" style="margin:5px">Змінити</a>
+                        <a asp-action="AddressDelete" asp-route-addressId="@address.Id" class="btn btn-danger">Видалити</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <h3>У вас немає доданих адрес. Бажаєте додати нову?</h3>
+    }
+    <a asp-action="AddAddress" class="btn btn-success" asp-route-userEmail="@Model.Email">Додати адресу</a>
+</div>

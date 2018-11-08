@@ -1,0 +1,66 @@
+﻿@model List<ChessBookStore.web.Models.Book>
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Виберіть книжку для зміни</h2>
+
+<h4>Список книг за категоріями:</h4>
+<hr />
+<nav id="cat-nav">
+    <ul class="horisontal-ul" id="cat">
+        @foreach (var category in ViewBag.Categories)
+        {
+            <li><a href="#category-@category.Id" class="btn btn-outline-dark">@category.Name</a></li>
+        }
+        <li><a asp-action="AddAuthor" class="btn btn-outline-danger">Додати Автора</a></li>
+        <li><a asp-action="AddBook" class="btn btn-outline-danger">Додати книжку</a></li>
+        <li><a asp-action="Authors" class="btn btn-outline-danger">Cписок авторів</a></li>
+    </ul>
+</nav>
+<hr/>
+    @foreach (var category in ViewBag.Categories)
+    {
+        <h3 id="category-@category.Id">@category.Name</h3>
+        <table class="table table-responsive ">
+            <thead>
+                <tr>
+                    <th scope="col">Фото</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Навза англійською</th>
+                    <th scope="col">Опис</th>
+                    <th scope="col">Опис англійською</th>
+                    <th scope="col">Ціна</th>
+                    <th scope="col">Автор</th>
+                    @*<th scope="col">Дисконти</th>*@
+                    <th scope="col">Рік</th>
+                    <th scope="col">Категорія</th>
+                    <th scope="col">Кількість</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.Where(p => p.CategoryId == (int)category.Id))
+                {
+                    <tr>
+                        <td><img src="~/images/books/min_@book.ImagePath" alt="book photo" width="50" height="100"></td>
+                        <td>@book.Name</td>
+                        <td>@book.NameEn</td>
+                        <td>@book.Description</td>
+                        <td>@book.DescriptionEn</td>
+                        <td>@book.Price</td>
+                        <td>@book.Author.Name</td>
+                        <td>@book.Year</td>
+                        <td>@book.Category.Name</td>
+                        <td>@book.Count</td>
+                        <td><a asp-action="EditSingleBook" asp-route-bookId="@book.Id" class="btn btn-warning">Змінити</a></td>
+                        <td><form onsubmit="return confirm('Ви точно бажаєте видалити книжку?')" asp-action="DeleteBook"><button type="submit" name="bookId" value="@book.Id" class="btn btn-danger">Видалити</button></form></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+

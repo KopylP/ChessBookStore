@@ -1,0 +1,47 @@
+﻿@model List<SingleUserFromListViewModel>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>Користувачі</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Ім'я</th>
+            <th>Призвіще</th>
+            <th>Права</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.Name</td>
+            <td>@user.LastName</td>
+            <td>
+                <form asp-action="ChangeRoles" method="post">
+                    <input type="hidden" value="@user.UserName" name="UserName"/>
+                    @foreach (var role in ViewBag.Roles)
+                    {
+                        @if (user.UserRoles?.Contains(role))
+                        {
+                            <label><input type="checkbox" name="Roles" value="@role" checked /> @role</label>
+                        }
+                        else
+                        {
+                            <label><input type="checkbox" name="Roles" value="@role" /> @role</label>
+                        }
+                    }
+                    @*  *@
+                    <button class="btn btn-warning" type="submit">Змінити</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

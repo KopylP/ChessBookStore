@@ -1,0 +1,10 @@
+﻿@model string
+@{
+    ViewData["Title"] = "AfterAuthorCreate";
+}
+
+<h2>Бажаєте створити нову книжку з цим автором або повернутися до створення авторів?</h2>
+<a asp-action="AddBook" asp-route-author='@ViewBag.Author' class="btn btn-success">Створити книжку </a>
+<a asp-action="AddAuthor" class="btn btn-default">Створити автора </a>
+<a asp-action="Index">Вийти </a>
+

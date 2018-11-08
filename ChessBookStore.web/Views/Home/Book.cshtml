@@ -1,0 +1,53 @@
+﻿@model ChessBookStore.web.Models.Book
+
+@{
+    ViewData["Title"] = "Book";
+}
+
+<h2>Book</h2>
+
+@*<h4>Book</h4>*@
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <div id="book-datails" class="col-lg-8 container-fluid row">
+            <div id="book-img" class="col-lg-3 col-md-3">
+                <img src="~/images/books/min_@Model.ImagePath" alt="@Model.Name" />
+                @*<div id="price">Price: @Model.Price$</div>*@
+            </div>
+            <div id="desc" class="col-lg-9">
+                <h4 class="h4"><b>@Model.Name</b></h4>
+                <h5 class="h5">Опис:</h5>
+                <p><b>@Model.Description</b></p>
+                <h5 class="h5">Автор: <a asp-action="Index" asp-route-authorId="@Model.Author.Id">@Model.Author.Name</a></h5>
+                <h5 class="h5">Рік: <b>@Model.Year</b></h5>
+            </div>
+        </div>
+
+        <div id="buy" class="card col-lg-2 col-sm-12" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Ціна: <b>@Model.Price$</b></h5>
+                <p class="card-text">Ви можете купити цю книжку за ціною <b>@Model.Price$</b>.</p>
+                <a href="#" class="btn btn-primary">Додати до кошику</a>
+            </div>
+        </div>
+    </div>
+</div>
+@if(Model.Author.Books.Count() > 0)
+{
+<h3 id="another">Інші книжки цього автора:</h3>
+<div class="container-fluid" id="another-books">
+
+    @foreach (var book in Model.Author.Books)
+    {
+        <a asp-action="Book" asp-route-id="@book.Id">
+            <div class="another-book">
+                <img src="~/images/books/min_@book.ImagePath" width="140" />
+                <p>@book.Name.Substring(0, 13)...</p>
+            </div>
+        </a>
+    }
+</div>
+}
+
+

@@ -1,0 +1,299 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+    font-family: 'PT Serif', serif;
+    /*background-color: #B8B1AB;*/
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+.navbar-collapse
+{
+    float: right;
+}
+#options {
+    background-color: white;
+    float: left;
+    width: 24%;
+    margin-top: 15px;
+    margin-right: 1%;
+    
+}
+#options #categories ul {
+    text-align:center;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+    #options #categories ul li {
+        margin-left: auto;
+        margin-right: auto;
+        width: 98%;
+        padding: 3px;
+        font-size: 18px;
+        list-style-type: none;
+        border-bottom: 1px solid #c7c7c7;
+        margin-top: 5px;
+        /*border-radius: 5px;*/
+    }
+
+    footer {
+        width: 100%;
+    }
+#authors{
+    margin-left:60px;
+}
+#options #authors h5 {
+    margin-top: 15px;
+    color: gray;
+}
+#options #authors ul
+{
+    list-style-type:none;
+}
+.title
+{
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+.option-button
+{
+    display: none;
+}
+/*.glyphicon-align-left {
+    border: 1px solid black;
+}*/
+.navbar-brand a {
+    color: black;
+}
+.navbar-brand a:hover
+{
+    color: #555;
+    text-decoration:none;
+}
+#books {
+    margin-top: 10px;
+    float: left;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.book-card {
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+    width: 230px;
+    /*border: 1px solid #c7c7c7;*/
+    -webkit-box-shadow: -9px 9px 14px -4px #6C6359;
+    -moz-box-shadow: -9px 9px 14px -4px #6C6359;
+    box-shadow: -9px 9px 14px -4px #6C6359;
+    border-radius: 5px;
+    border: 1px solid #c7c7c7
+}
+    .book-card:hover {
+        border: 1px solid #a5a5a5;
+        -webkit-box-shadow: -9px 9px 14px -4px #4A4137;
+        -moz-box-shadow: -9px 9px 14px -4px #4A4137;
+        box-shadow: -9px 9px 14px -4px #4A4137;
+        /*background-color: lightgoldenrodyellow;*/
+    }
+        /*.book-card:hover .img-container img {
+            width: 220px;
+            height: 270px;
+            margin-left: -20px;
+            margin-top: -20px;
+        }*/
+.book-card h5
+{
+    font-weight: bold;
+    font-size: 18px;
+}
+.book-card-body
+{
+    display: inline-block;
+    width: 100%;
+}
+.book-card-body ul {
+    width: 65%;
+    float: left;
+}
+.book-card-body button
+{
+    width: 33%;
+    height: 42px;
+    float: right;
+}
+.img-container {
+    margin: auto;
+    width: 180px;
+    height: 230px;
+    overflow: hidden;
+}
+    .img-container img {
+        width: 180px;
+        height: 230px;
+    }
+.horisontal-ul
+{
+    padding: 0;
+    list-style-type:none;
+}
+.horisontal-ul li
+{
+    margin: 10px;
+    float: left;
+}
+
+#cat-nav
+{
+    width: 100%;
+    display: inline-block;
+    background-color: white;
+}
+footer
+{
+    width: 100%;
+    text-align: center;
+    display:inline-block;
+}
+.navbar
+{
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+    .navbar ul li a {
+        color: black;
+    }
+a.btn-outline-secondary:hover
+{
+    background-color: #222;
+}
+#btn-up {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.icon-bar {
+    display: block;
+    border: 1px solid #aaa;
+    margin:5px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+}
+.navbar-toggler {
+    padding:0;
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    background-image: none;
+    border: 1px solid #aaa; /* added line */
+    border-radius: 4px
+}
+
+#book-img img
+{
+    width: 100%;
+}
+#another {
+    /*width: 100%;*/
+    /*margin: 10px;*/
+    /*text-align:center;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#another-books {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    /*justify-content: center;*/
+    overflow: auto;
+    /*align-items: flex-start;*/
+    /*padding-left:200px; /*  added  */
+    /*box-sizing: border-box;*/
+}
+.another-book {
+    padding-right: 10px;
+    width: 160px;
+    /*margin: auto auto;*/
+}
+.another-book img
+{
+    border-radius: 8px;
+}
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 780px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+    .book-card{
+        width: 100%;
+    }
+    .img-container{
+        float:left;
+    }
+    .book-card-body
+    {
+        float: left;
+        margin-left: 10px;
+        width: calc(100% - 200px);
+    }
+    #options {
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+        top: auto;
+        display: none;
+        left: 0px;
+    }
+    #options ul li
+    {
+        margin: 10px;
+    }
+    #books
+    {
+        width: 100%;
+        /*display: inline-block;*/
+    }
+    .option-button
+    {
+        display: block;
+        width: 98%;
+        margin: 1%;
+    }
+    #cat-nav
+    {
+        display: none;
+    }
+
+    #book-img img {
+        width: 280px;
+    }
+}

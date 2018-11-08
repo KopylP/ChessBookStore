@@ -1,0 +1,111 @@
+﻿@model ChessBookStore.web.Models.AddBookModelView
+
+@{
+    ViewData["Title"] = "AddBook";
+}
+
+<h2>Додавання нової книжки</h2>
+
+<h4>Введіть інформацію для додання нової книжки</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddBook" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label asp-for="Name" class="control-label">Назва</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <label asp-for="NameEn" class="control-label">Назва англійською мовою</label>
+                    <input asp-for="NameEn" class="form-control" />
+                    <span asp-validation-for="NameEn" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Опис</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionEn" class="control-label">Опис англійською мовою</label>
+                <textarea asp-for="DescriptionEn" class="form-control"></textarea>
+                <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label asp-for="Price" class="control-label">Ціна:</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <label asp-for="AuthorName" class="control-label">Доступні знижки на товар: </label><br />
+                    <input asp-for="AuthorName" class="form-control" list="list">
+                    <datalist id="list">
+                        @foreach (var author in Model.Authors)
+                        {
+                            <option value="@author.Name">@author.Id</option>
+                        }
+                    </datalist>
+
+                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+                </div>
+                <div class="col-sm-3">
+                    <label asp-for="Count" class="control-label">Кількість:</label>
+                    <input asp-for="Count" class="form-control" />
+                    <span asp-validation-for="Count" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label asp-for="DiscontId" class="control-label">Доступні знижки на товар: </label><br />
+                    <select asp-for="DiscontId" class="form-control">
+                        <option disabled selected>Знижка</option>
+                        @foreach (var discont in Model.Disconts)
+                        {
+                            <option value="@discont.Id">@discont.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="DiscontId" class="text-danger"></span>
+                </div>
+                <div class="col-sm-5">
+                    <label asp-for="CategoryId" class="control-label">Доступні знижки на товар: </label><br />
+                    <select asp-for="CategoryId" class="form-control">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="col-sm-3">
+                    <label asp-for="Year" class="control-label">Рік: </label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label">Фото: </label>
+                <input name="Image" class="form-control" type="file" accept="image/*"/>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <input asp-for="Image" type="hidden"/>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати:" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

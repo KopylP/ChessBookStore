@@ -1,0 +1,61 @@
+﻿@model List<Book>
+@{
+//ViewData["Title"] = "Home Page";
+}
+<h3 class="title">@ViewBag.Title</h3>
+<div class="container-fluid">
+    <div id="options">
+        <button type="button" class="btn btn-default option-button">Options</button>
+        <div id="categories">
+            <ul>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <li><a asp-action="Index" asp-route-categoryId="@category.Id">@category.Name</a></li>
+                }
+            </ul>
+        </div>
+
+        <div id="authors">
+            <h5>Пошук за авторами:</h5>
+            <ul>
+                @foreach (var author in ViewBag.Authors)
+                {
+                    <li><a asp-action="Index" asp-route-authorId="@author.Id">@author.Name</a></li>
+                }
+                @**@
+                <li><button class="btn btn-outline-primary" id="more">Більше...</button></li>
+            </ul>
+        </div>
+    </div>
+    <div id="books">
+        <button type="button" class="btn btn-default option-button">Options</button>
+        <br />
+        @foreach (var book in Model)
+        {
+            
+        <div class="book-card">
+            <a asp-action="Book" asp-route-id="@book.Id">
+                <div class="img-container">
+                    <img src="~/images/books/min_@book.ImagePath" />
+                </div>
+            </a>
+            <div class="book-card-body">
+                <a asp-action="Book" asp-route-id="@book.Id">
+                    <h5>@book.Name</h5>
+                </a>
+                <a asp-action="Index" asp-route-authorId="@book.Author.Id">
+                    <p>@book.Author.Name</p>
+                </a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price: @book.Price €</li>
+                    </ul>
+
+                    <button type="button" class="btn btn-success"><i class="icon-plus"></i></button>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+
+

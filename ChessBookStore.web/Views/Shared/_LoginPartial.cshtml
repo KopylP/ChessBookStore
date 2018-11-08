@@ -1,0 +1,16 @@
+﻿<ul class="nav navbar-nav ml-auto">
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item"><a class="nav-link btn btn-outline-secondary" asp-controller="Admin" asp-action="Index">Адмін панель</a></li>
+        }
+        <li class="nav-item"><a class="nav-link" asp-action="UserInformation" asp-controller="Account">Hello @User.Identity.Name</a></li>
+        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="LogOff">Log off</a></li>
+    }
+    else
+    {
+        <li class="nav-item"><a asp-action="Login" asp-controller="Account" asp-route-returnUrl="@Context.Request.Host@Context.Request.Path" class="nav-link "><i class="icon-user"></i> Log in</a></li>
+        <li class="nav-item"><a class="nav-link" asp-action="Register" asp-controller="Account"><i class="icon-user-plus"></i> Register</a></li>
+    }
+</ul>
